@@ -62,7 +62,7 @@ development:
 test:
   <<: *default
   database: recipe_app_test
-   username: postgres
+  username: postgres
   password: Al!jan1990
   host: localhost
   port: 5432
