@@ -1,9 +1,24 @@
 <h1>Food List</h1>
 
-<ul>
-  <% @foods.each do |food| %>
-    <li><%= "#{food.name} (Quantity: #{food.quantity})" %></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Measurement Unit</th>
+      <th>Unit Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= number_to_currency(food.unit_price) %></td>
+        <td><%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Add New Food', new_food_path %>
