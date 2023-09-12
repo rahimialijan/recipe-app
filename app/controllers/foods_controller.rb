@@ -3,6 +3,7 @@ class FoodsController < ApplicationController
 
   def index
     @foods = current_user.foods
+    @foods = Food.all
   end
 
   def new
