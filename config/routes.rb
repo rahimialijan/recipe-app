@@ -11,6 +11,7 @@ devise_scope :user do
   resources :users, only: [:index]
 end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+    resources :foods, only: [:index, :new, :create]
 
   # Defines the root path route ("/")
   # root "articles#index"
