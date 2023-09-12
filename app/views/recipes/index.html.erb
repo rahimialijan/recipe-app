@@ -14,7 +14,9 @@
                 <td><%= link_to recipe.name, recipe_path(recipe) %></td>
                 <td><%= link_to recipe.description, recipe_path(recipe) %></td>            
               <td>
+              <% if can?(:destroy, recipe) %>
                 <%= link_to 'delete', recipe_path(recipe), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %>
+              <% end %>  
               </td>
             </tr>
         <% end %>
