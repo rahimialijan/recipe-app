@@ -3,5 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @users = User.all.order(id: :asc)
+
+    authorize! :read, Recipe
   end
 end
