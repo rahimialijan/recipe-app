@@ -1,28 +1,38 @@
-<h1>Add New Food</h1>
+<div class="form-container">
+  <h1>Add New Food</h1>
 
-<%= form_with(model: @food, local: true) do |form| %>
-  <% if @food.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@food.errors.count, 'error') %> prohibited this food from being saved:</h2>
+  <%= form_with(model: @food, local: true) do |form| %>
+    <% if @food.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@food.errors.count, 'error') %> prohibited this food from being saved:</h2>
 
-      <ul>
-        <% @food.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @food.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :measurement_unit %>
+      <%= form.text_field :measurement_unit %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price, value: number_to_currency(@food.price, unit: '', delimiter: '.', separator: ',') %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Create Food' %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <!-- Add more fields here (e.g., measurement_unit, price, quantity) as needed -->
-
-  <div class="actions">
-    <%= form.submit 'Create Food' %>
-  </div>
-<% end %>
-
-<%= link_to 'Back to Food List', foods_path %>
+  <%= link_to 'Back to Food List', foods_path, class: "btn" %>
+</div>
