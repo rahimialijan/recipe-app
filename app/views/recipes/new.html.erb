@@ -22,11 +22,6 @@
     </div>
 
     <div>
-        <%= form.label :public%>
-        <%= form.check_box :public%>
-    </div>
-
-    <div>
         <%= form.label :user_id %>
         <%= form.collection_select :user_id, @users, :id, :name %>
     </div>  
