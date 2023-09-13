@@ -3,8 +3,8 @@ class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :edit, :update, :destroy]
 
    def index
-    @foods = current_user.foods
     @foods = Food.all
+    @foods = current_user.foods    
   end
 
   def new
@@ -21,6 +21,7 @@ class FoodsController < ApplicationController
   end
 
   def destroy
+    @food = Food.find(params[:id])
     @food.destroy
     redirect_to foods_path, notice: 'Food deleted successfully.'
   end

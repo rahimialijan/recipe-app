@@ -1,5 +1,7 @@
 <h1>Food List</h1>
 
+<%= link_to 'Add New Food', new_food_path, class: "btn" %>
+
 <table>
   <thead>
     <tr>
@@ -14,11 +16,13 @@
       <tr>
         <td><%= food.name %></td>
         <td><%= food.measurement_unit %></td>
-        <td><%= number_to_currency(food.unit_price) %></td>
-        <td><%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure you want to delete this item?' } %></td>
+        <td><%= number_to_currency(food.price, unit: '$') %></td>
+        <td>
+          <%= link_to 'Delete', foods_path(food), method: :delete, data: { confirm: 'Are you sure you want to delete this item?'}, class: "btn" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Add New Food', new_food_path %>
+
