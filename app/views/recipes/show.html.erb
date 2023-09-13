@@ -1,0 +1,19 @@
+
+
+<h2>Recipe Details</h2>
+<div class="container">
+    <br>
+    <h3 class="text-center"><%= @recipe.name %> </h2>
+    <div class="container d-flex flex-row justify-content-around">
+        <div>
+            <p>Preparation-Time: <%= @recipe.preparation_time %></p>
+            <p>Cooking-Time: <%= @recipe.cooking_time %></p>
+        </div>
+        <span><%= @recipe.public %></span>
+    </div>
+    <br><br>
+    <div class="container d-flex flex-row justify-content-around">
+        <button>Generate Shopping List</button>
+        <button>Add Ingedient</button>
+    </div>
+</div>

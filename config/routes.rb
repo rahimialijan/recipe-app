@@ -5,15 +5,9 @@ Rails.application.routes.draw do
     post 'login' => 'devise/sessions#create', as: :user_session
     get 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
   end
-
-devise_scope :user do
   root "home#index"
-  resources :users, only: [:index]
-end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-    resources :foods, only: [:index, :new, :create]
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :users, only: [:index, :show, :destroy]
+  resources :foods, only: [:new, :create, :index, :destroy]
+  resources :recipes, only: [:index, :show, :new, :create, :edit, :destroy]
 
 end
