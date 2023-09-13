@@ -22,6 +22,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @user = current_user
+    @recipe_foods = @recipe.recipe_foods
   end
 
   def destroy
@@ -32,6 +34,12 @@ class RecipesController < ApplicationController
     else
       redirect_to recipes_path, alert: 'You are not authorized to delete this recipe.'
     end
+  end
+
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+    redirect_to @recipe
   end
 
   private
