@@ -10,5 +10,6 @@ class Ability
     can :destroy, Recipe, user_id: user.id
     can :read, Food, user_id: user.id
     can :create, Food, user_id: user.id
+    can :destroy, Food, user_id: user.id
   end
 end
