@@ -1,10 +1,10 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_food, only: [:show, :edit, :update, :destroy]
+  before_action :set_food, only: %i[show edit update destroy]
 
-   def index
+  def index
     @foods = Food.all
-    @foods = current_user.foods    
+    @foods = current_user.foods
   end
 
   def new
