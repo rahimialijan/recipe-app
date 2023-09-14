@@ -29,7 +29,7 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-  <div class="field row mb-4 text-center">
+  <div class="field row mb-4 text-center align-items-center">
     <%= f.label :password_confirmation, class:'col-sm-3 col-form-label' %><br />
     <div class="col-sm-8">
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %>

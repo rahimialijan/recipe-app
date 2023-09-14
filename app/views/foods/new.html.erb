@@ -30,9 +30,8 @@
     </div>
 
     <div class="actions">
-      <%= form.submit 'Create Food' %>
+      <%= link_to 'Back to Food List', foods_path, class: "btn btn-secondary" %>
+      <%= form.submit 'Add Food', class: "btn btn-secondary"%>
     </div>
   <% end %>
-
-  <%= link_to 'Back to Food List', foods_path, class: "btn" %>
 </div>

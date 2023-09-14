@@ -5,11 +5,11 @@
         <tbody>
         <% @recipes.each do |recipe| %>
             <tr>
-                <td class="d-flex flex-column">
-                <%= link_to recipe.name, recipe_path(recipe), class:'text-dark h6' %>
-                <%= link_to 'delete', recipe_path(recipe), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm w-25 mr-4" %> 
-                </td>
-                <td><%= link_to recipe.description, recipe_path(recipe) , class:'text-dark h6'%></td>            
+              <td class="d-flex flex-column">
+              <%= link_to recipe.name, recipe_path(recipe), class:'text-dark h6' %>
+              <%= link_to 'delete', recipe_path(recipe), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm " %> 
+              </td>
+              <td><%= link_to recipe.description, recipe_path(recipe) , class:'text-dark h6'%></td>  
             </tr>
         <% end %>
       </tbody>      
