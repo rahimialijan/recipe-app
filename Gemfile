@@ -75,5 +75,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+gem 'factory_bot_rails', group: :test
 
 gem 'rubocop', '>= 1.0', '< 2.0'
