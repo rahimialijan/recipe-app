@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
+
   def new
     @recipe = Recipe.new
     @users = User.all
@@ -18,6 +19,12 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = current_user.recipes.all
+  end
+
+  def generate_shopping_list
+    @recipe = Recipe.find(params[:id])
+    @missing_food_items = @recipe.missing_food_items(current_user.foods)
+    @total_missing_price = @missing_food_items.sum(&:price)
   end
 
   def show

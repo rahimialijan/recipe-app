@@ -4,22 +4,26 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Description</th>
+        <th>User Name</th>
+        <th>Number of Food Items</th>
+        <th>Total Price</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <% @public_recipes.each do |recipe| %>
         <tr>
-          <td><%= link_to recipe.name, recipe_path(recipe) %></td>
-          <td><%= recipe.description %></td>
+          <td>
+            <%= recipe.name %><br>
+            by <%= recipe.user.name %>
+          </td>
+          <td><%= recipe.user.count_food_items %></td>
+          <td><%= recipe.user.total_price %></td>         
           <td>
             <%= link_to 'Details', recipe_path(recipe), class: 'btn btn-info btn-sm' %>
           </td>
         </tr>
       <% end %>
     </tbody>
-  </table>
-  <%= link_to 'Add New Recipe', new_recipe_path, class: "btn btn-primary" %>
+  </table>  
 </div>
