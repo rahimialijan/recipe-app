@@ -10,6 +10,7 @@ class User < ApplicationRecord
   def count_food_items
     foods.count
   end
+
   def total_price
     foods.sum(:price)
   end
