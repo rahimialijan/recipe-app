@@ -5,7 +5,7 @@ RSpec.describe RecipeFood, type: :model do
     user = User.create(name: 'John Doe', email: 'john@example.com', password: 'password')
     recipe = user.recipes.create(name: 'Pizza')
     food = Food.create(name: 'Tomato', price: 2.0)
-    recipe_food = RecipeFood.new(recipe: recipe, food: food)
+    recipe_food = RecipeFood.new(recipe:, food:)
     expect(recipe_food).to be_valid
     expect(recipe_food.quantity).to eq(1)
   end

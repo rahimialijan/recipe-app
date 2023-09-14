@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.feature 'Recipe Show Page' do
   let(:user) { create(:user) }
-  let(:recipe) { create(:recipe, user: user) }
-  let(:recipe_food) { create(:recipe_food, recipe: recipe) }
+  let(:recipe) { create(:recipe, user:) }
+  let(:recipe_food) { create(:recipe_food, recipe:) }
 
   before do
     login_as(user) # Assuming you have a login helper

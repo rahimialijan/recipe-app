@@ -7,13 +7,13 @@ RSpec.describe User, type: :model do
 
   describe '#count_food_items' do
     it 'returns the correct count of associated food items' do
-      expect(user.count_food_items).to eq(2) 
+      expect(user.count_food_items).to eq(2)
     end
   end
 
   describe '#total_price' do
     it 'returns the correct total price of associated food items' do
-      expect(user.total_price).to eq(16.98) 
+      expect(user.total_price).to eq(16.98)
     end
   end
 end
