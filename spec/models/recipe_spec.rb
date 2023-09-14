@@ -10,7 +10,7 @@ RSpec.describe Recipe, type: :model do
     it 'is invalid without a name' do
       recipe = Recipe.new(name: nil)
       expect(recipe).to_not be_valid
-    end    
+    end
   end
 
   describe 'associations' do

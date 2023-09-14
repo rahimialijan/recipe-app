@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
     it 'is invalid without a name' do
       user = User.new(name: nil, email: 'test@example.com', password: 'password123')
       expect(user).to_not be_valid
-    end   
+    end
   end
 
   describe 'associations' do
