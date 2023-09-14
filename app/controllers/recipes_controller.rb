@@ -11,20 +11,15 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       flash[:notice] = 'Recipe saved successfully'
+      redirect_to recipes_path
     else
       flash[:alert] = 'Recipe failed to save'
+      render :new
     end
-    redirect_to recipes_path
   end
 
   def index
     @recipes = current_user.recipes.all
-  end
-
-  def generate_shopping_list
-    @recipe = Recipe.find(params[:id])
-    @missing_food_items = @recipe.missing_food_items(current_user.foods)
-    @total_missing_price = @missing_food_items.sum(&:price)
   end
 
   def show
@@ -47,6 +42,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @recipe.update(public: !@recipe.public)
     redirect_to @recipe
+  end
+
+  def generate_shopping_list
+    @recipe = Recipe.find(params[:id])
+    @missing_food_items = @recipe.missing_food_items(current_user.foods)
+    @total_missing_price = @missing_food_items.sum(&:price)
   end
 
   private

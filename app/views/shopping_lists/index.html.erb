@@ -1,0 +1,26 @@
+<!-- app/views/shopping_lists/index.html.erb -->
+<h1>General Shopping List</h1>
+
+<p>Amount of Food to Buy: <%= @total_missing_items %></p>
+<p>Total Value of Food Needed: $<%= number_to_currency(@total_missing_price, unit: '') %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @missing_food_items.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.quantity %></td>
+        <td>$<%= number_to_currency(food.price, unit: '') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', recipes_path %>
+
