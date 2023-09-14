@@ -1,4 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'factory_bot_rails'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -14,6 +15,10 @@ require 'rspec/rails'
 # run twice. It is recommended that you do not name files matching this glob to
 # end with _spec.rb. You can configure this pattern with the --pattern
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
+# In rails_helper.rb or spec_helper.rb
+RSpec.configure do |config|
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+end
 #
 # The following line is provided for convenience purposes. It has the downside
 # of increasing the boot-up time by auto-requiring all files in the support
@@ -51,11 +56,15 @@ RSpec.configure do |config|
   #     RSpec.describe UsersController, type: :controller do
   #       # ...
   #     end
+  # rubocop:disable Lint/ShadowingOuterLocalVariable
+  RSpec.configure do |config|
+    config.include FactoryBot::Syntax::Methods
+  end
+  # rubocop:enable Lint/ShadowingOuterLocalVariable
   #
   # The different available types are documented in the features, such as in
   # https://rspec.info/features/6-0/rspec-rails
   config.infer_spec_type_from_file_location!
-
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
