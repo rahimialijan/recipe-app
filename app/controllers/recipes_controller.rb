@@ -83,25 +83,7 @@ class RecipesController < ApplicationController
     redirect_to @recipe
   end
 
-  private
 
-  def recipe_params
-    params.require(:recipe).permit(
-      :name,
-      :preparation_time,
-      :cooking_time,
-      :description,
-      :public,
-      :user_id
-    )
-  end
-end
-
-  def toggle_public
-    @recipe = Recipe.find(params[:id])
-    @recipe.update(public: !@recipe.public)
-    redirect_to @recipe
-  end
 
   private
 
