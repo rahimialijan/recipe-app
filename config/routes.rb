@@ -15,4 +15,6 @@ Rails.application.routes.draw do
     resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
   resources :public_recipes, only: [:index]
+  resources :shopping_lists, only: [:index]
+  post 'shopping_lists/:recipe_id/generate', to: 'shopping_lists#generate', as: :generate_shopping_list
 end
