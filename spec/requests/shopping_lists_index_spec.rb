@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'shopping_lists/index.html.erb', type: :view do
-  before(:each) do
-    assign(:total_missing_items, 5)
-    assign(:total_missing_price, 25.0)
-    assign(:missing_food_items, [
-      OpenStruct.new(name: 'Food1', quantity: 2, price: 10.0),
-      OpenStruct.new(name: 'Food2', quantity: 3, price: 15.0)
-    ])
+RSpec.describe 'Shopping Lists Index', type: :request do
+  before do
+    @total_missing_items = 5
+    @total_missing_price = 25.0
+    @missing_food_items = [
+      { name: 'Food1', quantity: 2, price: 10.0 },
+      { name: 'Food2', quantity: 3, price: 15.0 }
+    ]
   end
 
   it 'displays the shopping list title' do
