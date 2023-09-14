@@ -21,7 +21,7 @@
     
     <div class="container d-flex flex-row justify-content-around">
     <% if @recipe.user == current_user %>
-        <button>Generate Shopping List</button>
+        <%= link_to 'Generate shopping List', shopping_lists_path(@recipe), class: 'btn btn-primary' %>
         <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-secondary' %>
         <% end %>
     </div>
