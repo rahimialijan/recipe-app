@@ -22,7 +22,7 @@
     
     <div class="container d-flex flex-row justify-content-around">
     <% if @recipe.user == current_user %>
-        <%= link_to 'Generate shopping List', shopping_lists_path(@recipe), class: 'btn btn-primary' %>
+        <%= link_to 'Generate shopping List', shopping_lists_path(@recipe), class: 'btn btn-secondary' %>
         <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-secondary' %>
         <% end %>
     </div>
