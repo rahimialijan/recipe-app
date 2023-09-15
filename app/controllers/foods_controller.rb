@@ -3,7 +3,7 @@ class FoodsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @foods = current_user.foods
+    @foods = current_user.foods.includes(:recipe_foods)
   end
 
   def new

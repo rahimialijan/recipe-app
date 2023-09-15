@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @users = User.all
+    @users = User.includes(:recipes).all
   end
 
   def create
@@ -19,11 +19,12 @@ class RecipesController < ApplicationController
   end
 
   def index
-    @recipes = current_user.recipes.all
+    # @recipes = current_user.recipes.all
+    @recipes = current_user.recipes.includes(:recipe_foods).all
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @user = current_user
     @recipe_foods = @recipe.recipe_foods
   end
