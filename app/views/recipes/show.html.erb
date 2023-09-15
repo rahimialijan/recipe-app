@@ -1,0 +1,59 @@
+
+<div class="container card">
+    <br>
+  <div class="container" style="width: 40rem;"> 
+    <h3 class="text-center"><%= @recipe.name %> </h2>
+    <br>
+    <div class="container d-flex flex-row justify-content-around">
+        <div class="d-flex flex-column">
+            <p class="text-center">Preparation-Time: <%= @recipe.preparation_time %> hours</p>
+            <p class="text-center">Cooking-Time: <%= @recipe.cooking_time %> hours</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+        <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch do |f| %>
+            <div class="form-check form-switch">
+              <%= f.check_box :public, class: "form-check-input", onchange: "this.form.submit();", checked: @recipe.public? %>
+              <label class="form-check-label" for="public">Public</label>
+            </div>
+        <% end %>
+        </div>
+    </div>
+    <br><br>
+    
+    <div class="container d-flex flex-row justify-content-around">
+    <% if @recipe.user == current_user %>
+        <%= link_to 'Generate shopping List', shopping_lists_path(@recipe), class: 'btn btn-secondary' %>
+        <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-secondary' %>
+        <% end %>
+    </div>
+   </div> 
+    <hr class="my-6 align-self-center" style="width: 60rem;">
+    <table class="table table-striped table-hover align-self-center" style="width: 60rem;">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Value</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td><%= recipe_food.quantity * recipe_food.food.price %></td>
+          <td>
+            <div class="button-container d-flex flex-row">
+              <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, recipe_food), class: 'btn btn-info btn-sm mr-2' %>
+              <%= button_to 'Delete', recipe_recipe_food_path(@recipe, recipe_food), method: :delete, class: 'btn btn-outline-danger btn-sm w-100' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
+</div>
+
+
+
